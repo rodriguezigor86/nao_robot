@@ -94,7 +94,7 @@ class NaoWalker(NaoqiNode):
         rospy.Subscriber("cmd_step", StepTarget, self.handleStep, queue_size=50)
 
         # Create ROS publisher for speech
-        self.pub = rospy.Publisher("speech", String, latch = True)
+        self.pub = rospy.Publisher("speech", String, queue_size=1,latch = True)
 
         # ROS services (blocking functions)
         self.cmdPoseSrv = rospy.Service("cmd_pose_srv", CmdPoseService, self.handleTargetPoseService)
